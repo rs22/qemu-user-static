@@ -63,12 +63,12 @@ grep -q '^flags: $' /proc/sys/fs/binfmt_misc/qemu-aarch64
 
 # /usr/bin/qemu-aarch64-static should be included.
 docker run --rm -t ${DOCKER_REPO}:aarch64 /usr/bin/qemu-aarch64-static --version
-docker run --rm -t ${DOCKER_REPO}:x86_64-aarch64 /usr/bin/qemu-aarch64-static --version
+docker run --rm -t ${DOCKER_REPO}:ppc64le-aarch64 /usr/bin/qemu-aarch64-static --version
 
 # ------------------------------------------------
 # Integration test
 docker build --rm -t "test/integration/ubuntu" -<<EOF
-FROM ${DOCKER_REPO}:x86_64-aarch64 as qemu
+FROM ${DOCKER_REPO}:ppc64le-aarch64 as qemu
 FROM arm64v8/ubuntu
 COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin
 EOF
