@@ -47,7 +47,7 @@ script:
       fi
     - ./update.sh -v "$VERSION" -t "$TAG_VER" -r "$REPO" -d "$DOCKER_REPO"
     - docker images
-    - ./test.sh -d "$DOCKER_REPO"
+    # - ./test.sh -d "$DOCKER_REPO"
 after_success:
     - |
       if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
