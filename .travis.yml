@@ -1,6 +1,7 @@
 dist: bionic
 services: docker
 language: bash
+os: linux
 arch: ppc64le
 addons:
     apt:
@@ -26,12 +27,13 @@ env:
         - DOCKER_SERVER=docker.io
         # - DOCKER_SERVER=quay.io
         # Git repository
-        - REPO=multiarch/qemu-user-static
+        - REPO=rs22/qemu-user-static
         # Container repository
         - DOCKER_REPO=$DOCKER_SERVER/multiarch/qemu-user-static
         # - DOCKER_REPO=$DOCKER_SERVER/your_username/qemu-user-static
         - PACKAGE_URI="https://kojipkgs.fedoraproject.org/packages/qemu/4.1.0/1.fc31/ppc64le/qemu-user-static-4.1.0-1.fc31.ppc64le.rpm"
         - PACKAGE_FILENAME=$(basename "$PACKAGE_URI")
+        - secure: "ah0HC1EJ5cLklARNIRmVu3ubooP2UoFB3XgcdPg/e+sTyAWiPqcKQYsag5M7lM3wz46hhycJw3yl7h9aN0dLOOV4yjSUiO95CMyPjwaMtolci2c1ZH9TqIGYVcUXd7CiycxhkX6rApOodRU0/o8DB1MegJvMQss5+9BSSKhlbhV/W4lDmysPK/bHxQKhh/PBSEu9ftAFgSjAxHgzGE2fETbRaLCnL3/j2KS9Hk2lLiRUvaARipaBsR7vYlGTwzSk/orqTuMAXUBIHXYhWX0yznfAcwfvH7TI45UTfYTjKfgflCPnfErx5sxHLcIfslip6Ha2/LpqiUFNi8LNpq9oFp3g4wODekOUbNLBRB/r48ghDwG8e7DwwFlfJAR0M4uuGd6sPh1CQw5rOwvsgY8DGZEDqvAAS7JykvsKIJhKpxRUXU1eFQ6NIq0+/dps7HQn/THOhkwH8ZPGaOeFC6JEiEkbM2PzOzqGcPhfTeBlnk/5pxnpey53NIlf+HPggDLIJ1iuNQYx1v2cRRJ+uXBAI41E0CKeb0JlpELRj+OMXm1wq/48pWV6Ia0AhoX3vTrIQlZRADn5aKZqmxluGL/vvhpACEewuWPCFpuipYArdfAZGNJ2c3VVjmFyYMSdljyQKUKnK/zTs+djrAU6XDV4EJycu5vV1QYNb1oHka9Ysjk="
 before_script:
     - wget --content-disposition $PACKAGE_URI
     - rpm2cpio $PACKAGE_FILENAME | cpio -dimv
