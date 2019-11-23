@@ -7,5 +7,5 @@ cp ./usr/bin/qemu-*-static releases/
 cd releases/
 for file in *; do
     tar -czf $file.tar.gz $file;
-    cp $file.tar.gz x86_64_$file.tar.gz
+    cp $file.tar.gz ppc64le_$file.tar.gz
 done
