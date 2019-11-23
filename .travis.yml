@@ -29,11 +29,13 @@ env:
         # Git repository
         - REPO=rs22/qemu-user-static
         # Container repository
-        - DOCKER_REPO=$DOCKER_SERVER/multiarch/qemu-user-static
+        - DOCKER_REPO=$DOCKER_SERVER/rs22/qemu-user-static
         # - DOCKER_REPO=$DOCKER_SERVER/your_username/qemu-user-static
         - PACKAGE_URI="https://kojipkgs.fedoraproject.org/packages/qemu/4.1.0/1.fc31/ppc64le/qemu-user-static-4.1.0-1.fc31.ppc64le.rpm"
         - PACKAGE_FILENAME=$(basename "$PACKAGE_URI")
         - secure: "ah0HC1EJ5cLklARNIRmVu3ubooP2UoFB3XgcdPg/e+sTyAWiPqcKQYsag5M7lM3wz46hhycJw3yl7h9aN0dLOOV4yjSUiO95CMyPjwaMtolci2c1ZH9TqIGYVcUXd7CiycxhkX6rApOodRU0/o8DB1MegJvMQss5+9BSSKhlbhV/W4lDmysPK/bHxQKhh/PBSEu9ftAFgSjAxHgzGE2fETbRaLCnL3/j2KS9Hk2lLiRUvaARipaBsR7vYlGTwzSk/orqTuMAXUBIHXYhWX0yznfAcwfvH7TI45UTfYTjKfgflCPnfErx5sxHLcIfslip6Ha2/LpqiUFNi8LNpq9oFp3g4wODekOUbNLBRB/r48ghDwG8e7DwwFlfJAR0M4uuGd6sPh1CQw5rOwvsgY8DGZEDqvAAS7JykvsKIJhKpxRUXU1eFQ6NIq0+/dps7HQn/THOhkwH8ZPGaOeFC6JEiEkbM2PzOzqGcPhfTeBlnk/5pxnpey53NIlf+HPggDLIJ1iuNQYx1v2cRRJ+uXBAI41E0CKeb0JlpELRj+OMXm1wq/48pWV6Ia0AhoX3vTrIQlZRADn5aKZqmxluGL/vvhpACEewuWPCFpuipYArdfAZGNJ2c3VVjmFyYMSdljyQKUKnK/zTs+djrAU6XDV4EJycu5vV1QYNb1oHka9Ysjk="
+        - secure: "YgiUoCvRlF0JzSXnHu9M2t5x1hDsVg8Pjg1SpUBXz+mvVF+pSOTU1i3mOya7A68F3Nl9K3/J7MCVacuk85bhWTG7IYvVVE6aXALo4VuJLDq7UfDIX8cs2P3tjwcX1SFsUp/u9Y0bHPFNo80O0Lie4Gypb15gJOjuBUfooSuyAgYdbClPCAY0hgGifOBNjzBVBwDJH2x6X3uAvn12H8xAFq55WZHb8k5RjPBGQH+5qxl6E9TAxG+18OcAq80mgQCAtf8NT257Yln5O+KSWNNdLNNuTYGAlmdLpaElgZOIZdDwlSW0vUrrSxLNxmz/ta3brzUWR09v2aFSqJTYLQhe/tdPOyEIb6VJtYtdeC1uhTde4P5p4LUeM3k3pYYWjterudwnQVYUvdeMurzCJ88YhBg3OtZn3nOIfJMd8lYJPd1Ee0FeUcRi2DrrMCunBs4kE1N0hRZka4cuIDbbkZPIX8hh/5mPob3bxKNr3NY/hd0tx2qm74VeDBz+ZBBSt2ovjCSpFAaNoT9sjPiMq7cN3LkaokZnPE9zbIE6J37RVOtY/7BoLRsHOunhN1KK8Uc/8/rqpZ3Yfps7WaL4zQ6TzcZFzn66uArsy82PbbmztU2KIePSUTXuzdrbFbEu5epIdynOflcsWNHtTm7Ps2bflj3l8/4BQvv+QRgxFyolEi8="
+        - secure: "DYO9WSkgkrg+emeBLxj41MTS2u87gVmOh4EgNif7yQ79qqGeewJk5G8LvperieCUz/uX6bDxiE8T/Q9ERWH3LpZQio65Kku5EainsHQ76ppM6EEZNGYIIjXJqsj9tZH5wGddGRvxOrcIlq2Jy84NeLfcnp+aOITojulu0YsJyq5Sx5jMVEsis9Q3AWTelfHXC/WhBZJAGIEsUJAqlrE3NELQRAklVZpnsk7MYLRXPKRAQURg4JrDdzh/5Wm0GcpXA0c/0uQB95x7fYtJsPLuHGpebKPx1OBwNYl+Wf1F3h/Bnea5GPcspF1wuvGRSgCPZGijqUkRDC0rZx5YuZaTn17raH+z/hysFLE+qZ7UDdQxTMOVGOgGlDL6qHDWN/FI8nXN39pGN75shqrd/sThCMSr6FCMbYxSF1rNiif+Xayadv/yKUbTGu41fYgcCWM2L35xgyXkF8K0gVBCsS6HGMgH6DJ5+q7CHaXFzpgd+dNds0eG3ndTHxTr8zctmWkzJHEMHAgC0qPTX782DkEL7xaEmITo316BPae+GXqzaOxllohNf0raGhB4BJNf2y0ex0InSpDJ6tQ7Tu9HerhPHdfMxZs84v9j6iVLxySL6GkXNZi+eGrZace7xQhMXPFZGAg8qH6+eHKrK12jyKzNKVyWJV/pn2NyZVvmSxQsH5g="
 before_script:
     - wget --content-disposition $PACKAGE_URI
     - rpm2cpio $PACKAGE_FILENAME | cpio -dimv
